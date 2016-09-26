@@ -1,0 +1,57 @@
+{
+    "name": "cityware/city-seo",
+    "type": "library",
+    "description": "Cityware Seo",
+    "license": "GPL-3.0",
+    "keywords": [
+        "cityware",
+        "Seo"
+    ],
+    "authors": [
+        {
+            "name": "Fabricio S V Xavier",
+            "email": "fabricio@cityware.com.br",
+            "homepage": "http://www.cityware.com.br",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/cityware/city-seo.git"
+        }
+    ],
+    "homepage": "https://github.com/cityware/city-seo",
+    "autoload": {
+        "psr-4": {
+            "Cityware\\Seo\\": "src/"
+        },
+        "psr-0": {
+            "Cityware\\Seo\\": "src/"
+        },
+        "classmap": [
+            "src/"
+        ]
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+    },
+    "suggest": {
+        "ext-intl": "Required for most features of Zend\\I18n; included in default builds of PHP"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev",
+            "dev-develop": "1.1-dev"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CitywareTest\\Seo\\": "test/"
+        }
+    }
+}
