@@ -1,0 +1,38 @@
+<?php
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+namespace Cityware\Seo\RakePlus;
+
+/**
+ * Description of AbstractStopwordProvider
+ *
+ * @author fsvxavier
+ */
+abstract class AbstractStopwordProvider {
+
+    /**
+     * Returns a string containing a regular expression pattern.
+     */
+    abstract public function pattern();
+
+    /**
+     * Builds a string containing a big regular expression with all the
+     * stopwords in it.
+     *
+     * @param array $stopwords
+     *
+     * @return string
+     */
+    protected function buildPatternFromArray(array $stopwords) {
+        $pattern = [];
+        foreach ($stopwords as $word) {
+            $pattern[] = '\b' . $word . '\b';
+        }
+        return '/' . implode('|', $pattern) . '/i';
+    }
+
+}
