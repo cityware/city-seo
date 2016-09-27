@@ -71,7 +71,7 @@ class StopwordsPHP extends AbstractStopwordProvider {
      * @return string
      */
     public static function languageFile($language = 'en_US') {
-        return __DIR__ . '/StopWords/' . $language . '.php';
+        return __DIR__ . DIRECTORY_SEPARATOR . 'StopWords' . DIRECTORY_SEPARATOR . $language . '.php';
     }
 
     /**

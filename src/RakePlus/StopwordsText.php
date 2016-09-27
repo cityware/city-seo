@@ -31,7 +31,7 @@ class StopwordsText extends AbstractStopwordProvider {
      */
     public function __construct($filename) {
         $this->filename = $filename;
-        $this->stopwords = $this->loadLangTextFile($filename);
+        $this->stopwords = $this->loadLangTextFile(self::languageFile($filename));
         $this->pattern = $this->buildPatternFromArray($this->stopwords);
     }
 
@@ -58,7 +58,7 @@ class StopwordsText extends AbstractStopwordProvider {
      *
      * @return StopwordsPHP
      */
-    public static function createFromLanguage($language = 'en_US') {
+    public static function createFromLanguage($language = 'en_US.txt') {
         return (new self(self::languageFile($language)));
     }
 
@@ -70,8 +70,8 @@ class StopwordsText extends AbstractStopwordProvider {
      *
      * @return string
      */
-    public static function languageFile($language = 'en_US') {
-        return __DIR__ . '/StopWords/' . $language . '.txt';
+    public static function languageFile($language = 'en_US.txt') {
+        return __DIR__ . DIRECTORY_SEPARATOR . 'StopWords' . DIRECTORY_SEPARATOR . $language;
     }
 
     /**
@@ -115,7 +115,7 @@ class StopwordsText extends AbstractStopwordProvider {
             $stopwords = [];
             $handle = fopen($language_file, 'r');
             if ($handle) {
-                while(!feof($handle)){
+                while (!feof($handle)) {
                     $line = trim(fgets($handle));
                     if ($line[0] != '#') {
                         array_push($stopwords, $line);

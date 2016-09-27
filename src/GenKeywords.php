@@ -5,7 +5,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 namespace Cityware\Seo;
+
 /**
  * Description of GenKeywords
  *
@@ -196,7 +198,27 @@ class GenKeywords {
         // IGNORE WORDS LIST
         // add, remove, edit as needed
         // make sure that paths are correct and necessary files are uploaded to your server
-        require_once (__DIR__ . '/Common/'.$this->lang . '.php');
+        require_once (__DIR__ . DIRECTORY_SEPARATOR . 'GenKeywords' . DIRECTORY_SEPARATOR . 'Common' . DIRECTORY_SEPARATOR . $this->lang . '.php');
+
+        /*
+          $language_file = __DIR__ . DIRECTORY_SEPARATOR . 'GenKeywords' . DIRECTORY_SEPARATOR . 'Common' . DIRECTORY_SEPARATOR . $this->lang . '.txt';
+          $common2 = [];
+          $handle = fopen($language_file, 'r');
+          if ($handle) {
+          while (!feof($handle)) {
+          $line = trim(fgets($handle));
+          if ($line[0] != '#') {
+          array_push($common2, $line);
+          }
+          }
+          }
+
+          echo '<pre>';
+          print_r($common2);
+          exit;
+         * 
+         */
+
         if (isset($common)) {
             foreach ($common as $word) {
                 $str = str_replace(' ' . $word . ' ', ' ', $str);
@@ -366,7 +388,7 @@ class GenKeywords {
     //------------------------------------------------------------------
     // converts any-dimensional to 1-dimensional array
     private function arrayFlatten($array, $flat = false) {
-        if (!is_array($array) || empty($array)){
+        if (!is_array($array) || empty($array)) {
             return '';
         }
         if (empty($flat)) {
@@ -424,7 +446,7 @@ class GenKeywords {
             }
         }
         $kw_arr = array_unique($kw_arr);
-        
+
         // remove duplicate ENGLISH plural words
         if (substr($this->lang, 0, 2) == 'en') {
             $cnt = count($kw_arr);
